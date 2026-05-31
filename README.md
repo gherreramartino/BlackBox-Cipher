@@ -1,2 +1,2 @@
-# BlackBox Cipher
-BlackBox Cipher is a terminal utility that transforms plain text into secure encrypted messages using different cipher models.
+🔐 BlackBox Cipher
+A Python-based command-line tool for encrypting and decrypting messages using Caesar and Vigenère ciphers.
