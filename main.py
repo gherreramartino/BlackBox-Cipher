@@ -11,7 +11,7 @@ def main():
     elif option == 2:
         caesar_decrypt()
     elif option == 3:
-        print("-----Vigenère's Cyper Encryption-----")
+        vigeneres_encrypt()
     elif option == 4:
         print("-----Vigenère's Cyper Decryption-----")
         
@@ -87,7 +87,7 @@ def caesar_decrypt():
 
 def key_Check_Caesar(key_input):
     """This function checks the key is valid and converts it to a number so it
-    can be used for encrypting the message
+    can be used for encrypting the message.
     """
     if key_input.isdigit():
         b = int(key_input)
@@ -99,6 +99,39 @@ def key_Check_Caesar(key_input):
             return
         b = ord(key_input) - 65
     return b
+
+def vigeneres_encrypt():
+    print("-----Caesar's Cyper Encryption-----")
+    user_text = input("Paste here your text: ").upper()
+    user_text = user_text.replace(' ','')
+    key_input = input("Enter your key: ")
+    key_b = key_Check_Vigeneres(key_input)
+
+    for i in range(len(user_text)-1):
+        if 'A' <= user_text[i] <= 'Z':
+            txt.append(chr((ord(user_text[i]) - 65 +26 -key_b[i%4]) % 26 + 65))
+        else:
+            txt.append(user_text[i])
+    format_txt_result()
+    txt_results_toString()
+    
+
+def key_Check_Vigeneres(key_input):
+    """This function checks the key is valid and converts it to a list of numbers so it
+    can be used for encrypting the message.
+    """
+    key_b = []
+    key_input = key_input.strip().upper()
+    if not key_input.isalpha():
+        print("Invalid key.")
+        return
+    else:
+        for i in range(len(key_input)):
+            key_b.append(ord(key_input[i]) - 65)
+    
+    return key_b
+
+    
 
 if __name__ == "__main__":
     main()
