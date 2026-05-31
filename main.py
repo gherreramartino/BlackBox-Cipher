@@ -113,7 +113,7 @@ def vigeneres_encrypt():
     key_input = input("Enter your key: ")
     key_b = key_Check_Vigeneres(key_input)
 
-    for i in range(len(user_text)-1):
+    for i in range(len(user_text)):
         if 'A' <= user_text[i] <= 'Z':
             txt.append(chr((ord(user_text[i]) - 65 +key_b[i%4]) % 26 + 65))
         else:
@@ -146,7 +146,7 @@ def vigeneres_decrypt():
     key_input = input("Enter your key: ")
     key_b = key_Check_Vigeneres(key_input)
 
-    for i in range(len(user_text)-1):
+    for i in range(len(user_text)):
         if 'A' <= user_text[i] <= 'Z':
             txt.append(chr((ord(user_text[i]) - 65 +26 -key_b[i%4]) % 26 + 65))
         else:
