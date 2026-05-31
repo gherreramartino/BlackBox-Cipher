@@ -13,7 +13,7 @@ def main():
     elif option == 3:
         vigeneres_encrypt()
     elif option == 4:
-        print("-----Vigenère's Cyper Decryption-----")
+        vigeneres_decrypt()
         
     
 def clear_terminal():
@@ -101,7 +101,7 @@ def key_Check_Caesar(key_input):
     return b
 
 def vigeneres_encrypt():
-    print("-----Caesar's Cyper Encryption-----")
+    print("-----Vigenère's Cyper Encryption-----")
     user_text = input("Paste here your text: ").upper()
     user_text = user_text.replace(' ','')
     key_input = input("Enter your key: ")
@@ -109,7 +109,7 @@ def vigeneres_encrypt():
 
     for i in range(len(user_text)-1):
         if 'A' <= user_text[i] <= 'Z':
-            txt.append(chr((ord(user_text[i]) - 65 +26 -key_b[i%4]) % 26 + 65))
+            txt.append(chr((ord(user_text[i]) - 65 +key_b[i%4]) % 26 + 65))
         else:
             txt.append(user_text[i])
     format_txt_result()
@@ -131,6 +131,20 @@ def key_Check_Vigeneres(key_input):
     
     return key_b
 
+def vigeneres_decrypt():
+    print("-----Vigenère's Cyper Decryption-----")
+    user_text = input("Paste here your text: ").upper()
+    user_text = user_text.replace(' ','')
+    key_input = input("Enter your key: ")
+    key_b = key_Check_Vigeneres(key_input)
+
+    for i in range(len(user_text)-1):
+        if 'A' <= user_text[i] <= 'Z':
+            txt.append(chr((ord(user_text[i]) - 65 +26 -key_b[i%4]) % 26 + 65))
+        else:
+            txt.append(user_text[i])
+    format_txt_result()
+    txt_results_toString()
     
 
 if __name__ == "__main__":
