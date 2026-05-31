@@ -7,9 +7,9 @@ def main():
     option = get_valid_answer()
     
     if option == 1:        
-        Caesar_encrypt()
+        caesar_encrypt()
     elif option == 2:
-        print("-----Caesar's Cyper Decryption-----")
+        caesar_decrypt()
     elif option == 3:
         print("-----Vigenère's Cyper Encryption-----")
     elif option == 4:
@@ -44,21 +44,12 @@ def get_valid_answer():
     
     return answer
 
-def Caesar_encrypt():
+def caesar_encrypt():
     print("-----Caesar's Cyper Encryption-----")
     user_text = input("Paste here your text: ").upper()
     user_text = user_text.replace(' ','')
     key_input = input("Enter your key: ")
-
-    if key_input.isdigit():
-        b = int(key_input)
-
-    else:
-        key_input = key_input.strip().upper()
-        if len(key_input) != 1 or not key_input.isalpha():
-            print("Invalid key. Enter a number or a single letter.")
-            return
-        b = ord(key_input) - 65
+    b = key_Check_Caesar(key_input)
 
     for ch in user_text:
         if 'A' <= ch <= 'Z':
@@ -78,5 +69,36 @@ def txt_results_toString():
     for i in range (len(txt_result)):
         final = final + txt_result[i] + ' '
     print(final)
+
+def caesar_decrypt():
+    print("-----Caesar's Cyper Decryption-----")
+    user_text = input("Paste here your text: ").upper()
+    user_text = user_text.replace(' ','')
+    key_input = input("Enter your key: ")
+    b = key_Check_Caesar(key_input)
+
+    for ch in user_text:
+        if 'A' <= ch <= 'Z':
+            txt.append(chr((ord(ch) - 65 +26 -b) % 26 + 65))
+        else:
+            txt.append(ch)
+    format_txt_result()
+    txt_results_toString()
+
+def key_Check_Caesar(key_input):
+    """This function checks the key is valid and converts it to a number so it
+    can be used for encrypting the message
+    """
+    if key_input.isdigit():
+        b = int(key_input)
+
+    else:
+        key_input = key_input.strip().upper()
+        if len(key_input) != 1 or not key_input.isalpha():
+            print("Invalid key. Enter a number or a single letter.")
+            return
+        b = ord(key_input) - 65
+    return b
+
 if __name__ == "__main__":
     main()
