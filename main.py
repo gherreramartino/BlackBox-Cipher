@@ -45,6 +45,8 @@ def get_valid_answer():
     return answer
 
 def caesar_encrypt():
+    """Asks the user for a message and a key and prints on 
+    the terminal the message ciphered using caesar's method"""
     print("-----Caesar's Cyper Encryption-----")
     user_text = input("Paste here your text: ").upper()
     user_text = user_text.replace(' ','')
@@ -71,6 +73,8 @@ def txt_results_toString():
     print(final)
 
 def caesar_decrypt():
+    """Takes a text encrypted using caesar's method and it's key 
+    and prints the decrypted message"""
     print("-----Caesar's Cyper Decryption-----")
     user_text = input("Paste here your text: ").upper()
     user_text = user_text.replace(' ','')
@@ -101,6 +105,8 @@ def key_Check_Caesar(key_input):
     return b
 
 def vigeneres_encrypt():
+    """Asks the user for a message and a key and prints on 
+    the terminal the message ciphered using vigenere's method"""
     print("-----Vigenère's Cyper Encryption-----")
     user_text = input("Paste here your text: ").upper()
     user_text = user_text.replace(' ','')
@@ -132,6 +138,8 @@ def key_Check_Vigeneres(key_input):
     return key_b
 
 def vigeneres_decrypt():
+    """Takes a text encrypted using vigeneres method and it's key and "
+    prints the decrypted message"""
     print("-----Vigenère's Cyper Decryption-----")
     user_text = input("Paste here your text: ").upper()
     user_text = user_text.replace(' ','')
